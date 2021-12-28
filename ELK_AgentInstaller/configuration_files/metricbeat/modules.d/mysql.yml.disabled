@@ -1,0 +1,11 @@
+# Module: mysql
+
+- module: mysql
+  period: 1m
+  metricsets:
+    - status
+    - performance
+
+  hosts: ["tcp(127.0.0.1:3306)/"]
+  username: elasticsearch
+  password: password

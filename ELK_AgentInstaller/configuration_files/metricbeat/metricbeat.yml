@@ -1,0 +1,40 @@
+########################### Metricbeat Configuration ###########################
+#
+# Original Version: OSS-7.12.1
+# Last Update:      June 2021
+#
+# ============================= Metricbeat modules =============================
+
+metricbeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: true
+  reload.period: 10s
+
+metricbeat.max_start_delay: 10s
+
+# ======================= Elasticsearch template setting =======================
+
+setup.ilm.enabled: false
+setup.ilm.check_exists: false
+
+# ================================== General ===================================
+
+name: XXCOMPUTERNAMEXX
+
+# ================================== Outputs ===================================
+
+output.elasticsearch:
+  hosts: XXELKHOSTSXX
+  protocol: "https"
+  port: 9200
+
+  ssl.verification_mode: certificate
+  ssl.certificate_authorities: ["XXCACERTIFICATEXX"]
+  ssl.certificate: "XXAGENTCERTIFICATEXX"
+  ssl.key: "XXAGENTKEYXX"
+  
+# =================================== Logging ==================================
+
+logging.level: warning
+logging.to_systlog: false
+logging.metrics.enabled: false
